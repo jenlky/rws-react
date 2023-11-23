@@ -4,9 +4,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Box sx={{ width: '100%', maxWidth: 300 }}>
-        <Typography variant="h6" gutterBottom>Search NPM registry</Typography>
+        <Typography variant="h6" gutterBottom>NPM registry</Typography>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth />
+          <TextField id="outlined-basic" label="Search" variant="outlined" fullWidth />
           <Button variant="contained" size="medium" style={{ marginLeft: '8px', backgroundColor: '#1565C0' }}>Submit</Button>
         </div>
       </Box>
