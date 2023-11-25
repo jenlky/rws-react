@@ -1,0 +1,21 @@
+.search-result-row {
+  margin-top: 5px;
+  width: 500px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: grey;
+}
+
+.search-result-row:hover {
+  background-color: #1565C0;
+}
+
+.search-result-row-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  margin-left: '8px';
+  background-color: '#1565C0' !important;
+}

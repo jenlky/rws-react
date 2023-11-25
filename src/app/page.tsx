@@ -1,9 +1,10 @@
 'use client';
-import { Box, Button, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, CircularProgress, TextField, Typography } from '@mui/material'
 import axios from 'axios';
 import { useState } from 'react';
+import './style.css'
 
-interface npmObject {
+interface NpmObject {
   flags?: object
   package: Package
   score?: object
@@ -29,16 +30,19 @@ interface Package {
 
 export default function searchNpmRegistryComponent() {
   const [searchTerm, setSearchTerm] = useState('')
-  const [data, setData] = useState<npmObject[]>([])
+  const [data, setData] = useState<NpmObject[]>([])
 
   function searchTermHandler(event: any) {
     setSearchTerm(event?.target.value)
   }
   
+  function formatDate(dateString: string){
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString([], options);
+  }
+
   async function searchNpmRegistry(event: any) {
-    event.preventDefault(); 
-    console.log('searchNpmRegistry')
-  
+    event.preventDefault();   
     const res = await axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchTerm}`)
     console.log('res', res)
     setData(res.data.objects)
@@ -47,10 +51,12 @@ export default function searchNpmRegistryComponent() {
   function SearchResults() {
     return data.map(pkg => {
       return (
-        <div>
-          {pkg.package.name}
-          {pkg.package.date}
-          {pkg.package.author?.name}
+        <div className='search-result-row'>
+          <div className='search-result-row-top'>
+            <div>{pkg.package.name}</div>
+            <div>{formatDate(pkg.package.date)}</div>
+          </div>
+          <div>{pkg.package.author?.name}</div>
         </div>
       )
     })
@@ -60,7 +66,7 @@ export default function searchNpmRegistryComponent() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Box
         component="form"
-        sx={{ width: '100%', maxWidth: 300 }}
+        sx={{ width: '100%', maxWidth: 500 }}
         noValidate
         autoComplete="off"
         onSubmit={searchNpmRegistry}
