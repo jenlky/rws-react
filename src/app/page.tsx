@@ -3,30 +3,7 @@ import { Alert, Box, Button, CircularProgress, TextField, Typography } from '@mu
 import axios from 'axios';
 import { useState } from 'react';
 import './style.css'
-
-interface NpmObject {
-  flags?: object
-  package: Package
-  score?: object
-  searchScore?: string
-}
-
-interface Author {
-  name: string
-}
-
-interface Package {
-  author: Author
-  date: string
-  description?: string
-  keywords?: string[]
-  links?: object
-  maintainers?: object[]
-  name: string
-  publisher?: object
-  scope?: string
-  version?: string
-}
+import { NpmObject } from './model/npm-registry';
 
 export default function searchNpmRegistryComponent() {
   const [searchTerm, setSearchTerm] = useState('')
