@@ -40,7 +40,7 @@ export default function searchNpmRegistryComponent() {
     return data.map(pkg => {
       return (
         <div className='search-result-row' key={pkg.package.name}>
-          <div className='search-result-row-top'>
+          <div className='search-result-row-content'>
             <div>
               <div>
                 <span className='bold'>Package: </span>
