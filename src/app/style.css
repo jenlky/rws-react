@@ -1,12 +1,14 @@
 .search-result-row {
   margin-top: 5px;
   width: 500px;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 4px;
-  background-color: grey;
+  background-color: #787878;
+  color: white;
 }
 
 .search-result-row:hover {
+  cursor: pointer;
   background-color: #1565C0;
 }
 
@@ -18,4 +20,21 @@
 .button {
   margin-left: '8px';
   background-color: '#1565C0' !important;
+}
+
+.pagination {
+  margin-top: 10px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.updated-date {
+  font-weight: 700;
+  text-align: right;
+}
+
+.italic {
+  font-style: italic;
 }
