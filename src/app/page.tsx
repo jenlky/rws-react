@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import './style.css'
 import { NpmObject } from './model/npm-registry';
+import { formatDate } from './helper';
 
 // global variable
 const resultsPerPage = 10
@@ -18,11 +19,6 @@ export default function searchNpmRegistryComponent() {
 
   function searchTermHandler(event: any) {
     setSearchTerm(event?.target.value)
-  }
-  
-  function formatDate(dateString: string) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString([], options);
   }
 
   async function searchNpmRegistry(event: any) {
