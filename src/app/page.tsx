@@ -68,11 +68,7 @@ export default function searchNpmRegistryComponent() {
   async function handlePageChange (event: any, value: number) {
     setPage(value)
     const offset = resultsPerPage * (value - 1)
-    console.log('offset', offset)
-
-    const res = await axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchTerm}&size=${resultsPerPage}&from=${offset}`)
-    console.log('res handlePageChange', res)
-  
+    const res = await axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchTerm}&size=${resultsPerPage}&from=${offset}`)  
     setData(res.data.objects)
     setTotal(res.data.total)
   }
