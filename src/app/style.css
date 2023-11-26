@@ -12,7 +12,7 @@
   background-color: #1565C0;
 }
 
-.search-result-row-top {
+.search-result-row-content {
   display: flex;
   justify-content: space-between;
 }
