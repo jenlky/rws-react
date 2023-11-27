@@ -38,3 +38,18 @@
 .italic {
   font-style: italic;
 }
+
+.package-main {
+  display: flex;
+  flex-flow: column;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+}
+
+.package-name {
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: underline;
+  color: #0060B6;
+}
