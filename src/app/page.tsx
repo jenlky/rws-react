@@ -5,6 +5,7 @@ import { useState } from 'react';
 import './style.css'
 import { NpmObject } from './model/npm-registry';
 import { formatDate } from './helper';
+import Link from 'next/link';
 
 // global variable
 const resultsPerPage = 10
@@ -39,24 +40,26 @@ export default function searchNpmRegistryComponent() {
   function SearchResults() {
     return data.map(pkg => {
       return (
-        <div className='search-result-row' key={pkg.package.name}>
-          <div className='search-result-row-content'>
-            <div>
+        <Link href={`package/${pkg.package.name}`}>
+          <div className='search-result-row' key={pkg.package.name}>
+            <div className='search-result-row-content'>
               <div>
-                <span className='bold'>Package: </span>
-                <span>{pkg.package.name}</span>
+                <div>
+                  <span className='bold'>Package: </span>
+                  <span>{pkg.package.name}</span>
+                </div>
+                <div>
+                  <span className='bold'>Author: </span>
+                  <span className='italic'>{pkg.package.author?.name}</span>            
+                </div>
               </div>
               <div>
-                <span className='bold'>Author: </span>
-                <span className='italic'>{pkg.package.author?.name}</span>            
+                <div className='updated-date'>Updated date</div>
+                <div className='italic'>{formatDate(pkg.package.date)}</div>
               </div>
-            </div>
-            <div>
-              <div className='updated-date'>Updated date</div>
-              <div className='italic'>{formatDate(pkg.package.date)}</div>
             </div>
           </div>
-        </div>
+        </Link>
       )
     })
   }
