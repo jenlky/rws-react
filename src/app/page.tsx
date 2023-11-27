@@ -25,7 +25,6 @@ export default function SearchNpmRegistryComponent() {
   async function searchNpmRegistry(event: any) {
     event.preventDefault();
     const res = await axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchTerm}&size=${resultsPerPage}&from=0`)
-    console.log('res', res)
     setData(res.data.objects)
     setTotal(res.data.total)
 
@@ -105,6 +104,7 @@ export default function SearchNpmRegistryComponent() {
             size="medium" 
             style={{ marginLeft: '8px', backgroundColor: '#1565C0' }} 
             type='submit'
+            id="submit-btn"
           >
             Submit
           </Button>
