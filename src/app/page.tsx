@@ -40,8 +40,8 @@ export default function searchNpmRegistryComponent() {
   function SearchResults() {
     return data.map(pkg => {
       return (
-        <Link href={`package/${pkg.package.name}`}>
-          <div className='search-result-row' key={pkg.package.name}>
+        <Link href={`package/${pkg.package.name}`} key={pkg.package.name}>
+          <div className='search-result-row'>
             <div className='search-result-row-content'>
               <div>
                 <div>
