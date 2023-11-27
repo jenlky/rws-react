@@ -4,12 +4,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import '../../style.css';
 
-export default function PackagePage({ params }: { params: { slug: string } }) {
+export default function PackagePage({ params }: { params: { slug: string[] } }) {
   const [data, setData] = useState<Package>()
 
   async function fetchPackageDetails() {
-    const res = await axios.get(`https://registry.npmjs.org/${params.slug}`)
-    console.log('res new page', res)
+    let slug = ''
+    if (params.slug.length > 1) {
+      slug = params.slug.join("/")
+    }
+    const res = await axios.get(`https://registry.npmjs.org/${slug}`)
     return res
   }
 
