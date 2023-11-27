@@ -10,7 +10,7 @@ import Link from 'next/link';
 // global variable
 const resultsPerPage = 10
 
-export default function searchNpmRegistryComponent() {
+export default function SearchNpmRegistryComponent() {
   const [searchTerm, setSearchTerm] = useState('')
   const [data, setData] = useState<NpmObject[]>([])
   const [total, setTotal] = useState(0)
