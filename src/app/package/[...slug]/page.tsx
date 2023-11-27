@@ -11,6 +11,8 @@ export default function PackagePage({ params }: { params: { slug: string[] } }) 
     let slug = ''
     if (params.slug.length > 1) {
       slug = params.slug.join("/")
+    } else {
+      slug = params.slug[0]
     }
     const res = await axios.get(`https://registry.npmjs.org/${slug}`)
     return res
