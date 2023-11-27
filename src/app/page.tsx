@@ -75,7 +75,7 @@ export default function SearchNpmRegistryComponent() {
     const numOfPages = Math.ceil(total/resultsPerPage)
     if (toDisplayPage) {
       return (
-        <Pagination page={page} className='pagination' count={numOfPages} onChange={handlePageChange} /> 
+        <Pagination id='pagination' page={page} className='pagination' count={numOfPages} onChange={handlePageChange} /> 
       )
     }
   }
