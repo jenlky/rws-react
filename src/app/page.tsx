@@ -4,8 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import './style.css'
 import { NpmObject } from './model/npm-registry';
-import { formatDate } from './helper';
-import Link from 'next/link';
+import SearchResults from '@/components/SearchResults';
 
 // global variable
 const resultsPerPage = 10
@@ -34,33 +33,6 @@ export default function SearchNpmRegistryComponent() {
       setOpenErrorMsg(true);
       setToDisplayPage(false)
     }
-  }
-
-  function SearchResults() {
-    return data.map(pkg => {
-      return (
-        <Link href={`package/${pkg.package.name}`} key={pkg.package.name}>
-          <div className='search-result-row'>
-            <div className='search-result-row-content'>
-              <div>
-                <div>
-                  <span className='bold'>Package: </span>
-                  <span>{pkg.package.name}</span>
-                </div>
-                <div>
-                  <span className='bold'>Author: </span>
-                  <span className='italic'>{pkg.package.author?.name}</span>            
-                </div>
-              </div>
-              <div>
-                <div className='updated-date'>Updated date</div>
-                <div className='italic'>{formatDate(pkg.package.date)}</div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      )
-    })
   }
 
   async function handlePageChange (event: any, value: number) {
@@ -110,7 +82,7 @@ export default function SearchNpmRegistryComponent() {
           </Button>
         </div>
       </Box>
-      <SearchResults />
+      <SearchResults data={data} />
       <Page />
       <Snackbar open={openErrorMsg} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
