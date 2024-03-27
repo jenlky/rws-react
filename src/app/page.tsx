@@ -5,6 +5,7 @@ import { useState } from 'react';
 import './style.css'
 import { NpmObject } from './model/npm-registry';
 import SearchResults from '@/components/SearchResults';
+import Page from '@/components/Page';
 
 // global variable
 const resultsPerPage = 10
@@ -43,21 +44,14 @@ export default function SearchNpmRegistryComponent() {
     setTotal(res.data.total)
   }
 
-  function Page() {
-    const numOfPages = Math.ceil(total/resultsPerPage)
-    if (toDisplayPage) {
-      return (
-        <Pagination id='pagination' page={page} className='pagination' count={numOfPages} onChange={handlePageChange} /> 
-      )
-    }
-  }
-
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
     setOpenErrorMsg(false);
   };
+
+  const numOfPages = Math.ceil(total/resultsPerPage)
 
   return (
     <main className="flex min-h-screen flex-col items-center p-20" style={{ marginBottom: '10px' }}>
@@ -83,7 +77,7 @@ export default function SearchNpmRegistryComponent() {
         </div>
       </Box>
       <SearchResults data={data} />
-      <Page />
+      <Page page={page} numOfPages={numOfPages} toDisplayPage={toDisplayPage} handlePageChange={handlePageChange} />
       <Snackbar open={openErrorMsg} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
           No npm packages were found!
