@@ -30,7 +30,7 @@ export default function PackagePage({ params }: { params: { slug: string[] } }) 
       <div>
         <div>
           <span className="bold">Author: </span>
-          {data?.author.name || 'NIL'}
+          {data?.author?.name || 'NIL'}
         </div>
         <div>
           <span className="bold">Description: </span>
